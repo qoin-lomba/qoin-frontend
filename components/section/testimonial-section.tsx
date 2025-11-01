@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PageContainer from "../shared/page-container";
 import Section from "../shared/section";
 import ShinyButton from "../shared/shiny-button";

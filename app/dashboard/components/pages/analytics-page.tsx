@@ -37,7 +37,7 @@ const mockSalesData = [
 ]
 
 export function AnalyticsPage() {
-  const [dateRange, setDateRange] = useState({ start: "", end: "" })
+  const [, setDateRange] = useState({ start: "", end: "" })
 
   return (
     <div className="p-8 space-y-6">

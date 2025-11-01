@@ -13,7 +13,6 @@ interface POSCartItemProps {
 }
 
 export function POSCartItem({
-  id,
   name,
   price,
   quantity,

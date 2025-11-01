@@ -7,15 +7,25 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { X } from "lucide-react"
 
+export interface ProductFormData {
+  name: string
+  sku: string
+  price: string
+  stock: string
+  category: string
+}
+
 interface ProductFormModalProps {
   isOpen: boolean
   onClose: () => void
-  onSubmit: (data: any) => void
-  initialData?: any
+  onSubmit: (data: ProductFormData) => void
+  initialData?: ProductFormData
 }
 
 export function ProductFormModal({ isOpen, onClose, onSubmit, initialData }: ProductFormModalProps) {
-  const [formData, setFormData] = useState(initialData || { name: "", sku: "", price: "", stock: "", category: "" })
+  const [formData, setFormData] = useState<ProductFormData>(
+    initialData ?? { name: "", sku: "", price: "", stock: "", category: "" }
+  )
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

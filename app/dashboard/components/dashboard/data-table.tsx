@@ -13,7 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 interface DataTableProps {
   title?: string;
   columns: Array<{ key: string; label: string }>;
-  data: Array<Record<string, any>>;
+  data: Array<Record<string, React.ReactNode>>;
 }
 
 export function DataTable({ title, columns, data }: DataTableProps) {

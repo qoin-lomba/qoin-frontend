@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { DataTable } from "@/app/dashboard/components/dashboard/data-table"
 import { FilterBar } from "@/app/dashboard/components/dashboard/filter-bar"
-import { ProductFormModal } from "@/app/dashboard/components/dashboard/product-form-modal"
+import { ProductFormModal, type ProductFormData } from "@/app/dashboard/components/dashboard/product-form-modal"
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
 
@@ -22,8 +22,18 @@ export function InventoryPage() {
 
   const filteredData = inventory.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
-  const handleAddProduct = (data: any) => {
-    setInventory([...inventory, { id: String(inventory.length + 1), ...data }])
+  const handleAddProduct = (data: ProductFormData) => {
+    setInventory([
+      ...inventory,
+      {
+        id: String(inventory.length + 1),
+        name: data.name,
+        sku: data.sku,
+        category: data.category,
+        stock: Number(data.stock),
+        price: data.price,
+      },
+    ])
     setIsModalOpen(false)
   }
 

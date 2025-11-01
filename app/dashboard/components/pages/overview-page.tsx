@@ -26,14 +26,14 @@ const mockCategoryData = [
 ]
 
 export function OverviewPage() {
-  const [dateRange, setDateRange] = useState({ start: "", end: "" })
+  const [, setDateRange] = useState({ start: "", end: "" })
 
   return (
     <div className="p-4 md:p-8 space-y-6 md:space-y-8">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">Overview</h1>
-          <p className="text-sm md:text-base text-muted-foreground mt-1">Welcome back! Here's your business summary.</p>
+          <p className="text-sm md:text-base text-muted-foreground mt-1">Welcome back! Here&apos;s your business summary.</p>
         </div>
         <DateRangePicker onDateChange={(start, end) => setDateRange({ start, end })} />
       </div>

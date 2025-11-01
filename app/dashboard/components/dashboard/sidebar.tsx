@@ -10,15 +10,15 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+type PageId = "overview" | "pos" | "inventory" | "sales" | "analytics";
+
 interface SidebarProps {
   currentPage: string;
-  onPageChange: (
-    page: "overview" | "pos" | "inventory" | "sales" | "analytics"
-  ) => void;
+  onPageChange: (page: PageId) => void;
 }
 
 export function Sidebar({ currentPage, onPageChange }: SidebarProps) {
-  const menuItems = [
+  const menuItems: Array<{ id: PageId; label: string; icon: React.ComponentType<{ className?: string }> }> = [
     { id: "overview", label: "Overview", icon: BarChart3 },
     { id: "pos", label: "POS", icon: ShoppingCart },
     { id: "inventory", label: "Inventory", icon: Package },
@@ -42,7 +42,7 @@ export function Sidebar({ currentPage, onPageChange }: SidebarProps) {
           return (
             <Button
               key={item.id}
-              onClick={() => onPageChange(item.id as any)}
+              onClick={() => onPageChange(item.id)}
               variant={isActive ? "default" : "link"}
               className={`w-full justify-start gap-3 ${
                 isActive

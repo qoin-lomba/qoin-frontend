@@ -47,7 +47,7 @@ const mockSalesData = [
 
 export function SalesPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [dateRange, setDateRange] = useState({ start: "", end: "" });
+  const [, setDateRange] = useState({ start: "", end: "" });
 
   const filteredData = mockSalesData.filter(
     (item) =>

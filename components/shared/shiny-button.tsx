@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "../ui/button";
-import Image from "next/image";
-import { Heart } from "lucide-react";
 import RightArrow from "../icons/right-arrow";
 
 const ShinyButton = ({

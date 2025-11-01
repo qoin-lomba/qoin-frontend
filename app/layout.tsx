@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/section/header";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -22,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${urbanist.variable}`}>
       <body className={`antialiased`}>
-        {/* <Header /> */}
         {children}
       </body>
     </html>
