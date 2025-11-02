@@ -6,7 +6,7 @@ import Like from "../icons/like-icon";
 
 const CommentCard = () => {
   return (
-    <Card className="w-[437px]  ">
+    <Card className="w-[437px]">
       <CardHeader className="flex items-center gap-4 px-5">
         <div className="relative w-[58px] h-[58px] rounded-full overflow-hidden">
           <Image
