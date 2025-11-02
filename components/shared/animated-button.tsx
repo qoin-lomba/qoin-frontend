@@ -6,9 +6,9 @@ import Star2 from "@/components/icons/star-2";
 import Star3 from "@/components/icons/star-3";
 import Search from "@/components/icons/search-icon";
 
-const AnimatedButton = () => {
+const AnimatedButton = ({ className }: { className?: string }) => {
   return (
-    <motion.div className="inline-block ">
+    <motion.div className={`inline-block ${className}`}>
       <div className="group relative">
         {/* Decorative Stars */}
         <div className="flex justify-around w-full -z-20 transition-all duration-300 absolute ">
@@ -23,7 +23,7 @@ const AnimatedButton = () => {
           </span>
         </div>
         {/* Content */}
-        <PrimaryButton className="group relative overflow-visible bg-gradient-to-r from-[#FD6700] to-[#FF944B] text-white rounded-[100px] px-5 py-3 flex items-center gap-2 shadow-md hover:shadow-lg">
+        <PrimaryButton className="group  relative overflow-visible shadow-[2px_4px_10px_0_rgba(233,109,0,0.4)] bg-[linear-gradient(86deg,#FD6700_4.98%,#FF944B_94.22%)] text-white rounded-[100px] px-5 py-3 flex items-center gap-2 hover:shadow-lg">
           <Search className="size-5" />
           <p className="text-2xl font-semibold">Tanya AI</p>
         </PrimaryButton>

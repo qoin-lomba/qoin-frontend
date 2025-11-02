@@ -20,7 +20,7 @@ const TestimonialSection = () => {
           </div>
           <ShinyButton className="mt-[30px]">Lihat Semua Ulasan</ShinyButton>
         </header>
-        <article className="space-y-10 overflow-hidden shrink-0">
+        <article className="space-y-10 overflow-hidden shrink-0 mt-8 lg:mt-0">
           <div className="overflow-hidden">
             <div className="flex shrink-0 gap-8 animate-marquee">
               {Array.from({ length: 10 }).map((_, index) => (

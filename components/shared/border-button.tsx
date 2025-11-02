@@ -14,7 +14,9 @@ const BorderButton = ({
   return (
     <Button
       variant="outline"
-      className={`inline-flex items-center ${className ?? ""}`}
+      className={`inline-flex items-center border-primary text-secondary hover:text-secondary hover:bg-white cursor-pointer px-4 py-2.5 text-xl font-semibold ${
+        className ?? ""
+      }`}
       {...props}
     >
       {icon && <span className={`relative w-4 h-4 shrink-0`}>{icon}</span>}
