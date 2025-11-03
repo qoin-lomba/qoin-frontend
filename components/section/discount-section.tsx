@@ -4,21 +4,28 @@ import Section from "../shared/section";
 
 const DiscountSection = () => {
   return (
-    <Section className="relative mx-auto w-full mt-20 min-h-[302px] overflow-visible">
-      {/* layer background (sesuai Figma: 302px) */}
+    <Section className="relative w-full mt-20 overflow-visible">
+      {/* Full background */}
       <div
-        className="absolute inset-x-0 top-0 h-[302px] bg-[url('/images/gradient-menu.png')] bg-cover md:bg-contain bg-no-repeat mx-auto"
+        className="
+          absolute inset-0 
+          h-[302px] w-full 
+          bg-[url('/images/gradient-menu.png')] 
+          bg-cover md:bg-contain bg-no-repeat bg-center
+          rounded-[20px]
+        "
         aria-hidden
       />
 
-
-      {/* layer konten */}
-      <PageContainer className="relative z-10 pt-6 pb-12">
-        <ProductSection
-          title="Promo Spesial Buat Kamu"
-          description="Belanja hemat sambil dukung UMKM lokal? Bisa banget!"
-          isPromo
-        />
+      {/* Konten */}
+      <PageContainer className="relative z-10 pt-10 pb-8">
+        <div className="text-center">
+          <ProductSection
+            title="Promo Spesial Buat Kamu"
+            description="Belanja hemat sambil dukung UMKM lokal? Bisa banget!"
+            isPromo
+          />
+        </div>
       </PageContainer>
     </Section>
   );

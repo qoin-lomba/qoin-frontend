@@ -3,6 +3,7 @@
 import DiscountSection from "@/components/section/discount-section";
 import DisplayProductType from "@/components/section/display-product-type";
 import ExploreSection from "@/components/section/explore-section";
+import Footer from "@/components/section/footer";
 import Header from "@/components/section/header";
 import HeroSection from "@/components/section/hero-section";
 import ImageHero from "@/components/section/image-hero";
@@ -30,6 +31,7 @@ export default function Home() {
       <ImageHero />
       <CallingAction openModal={openModal} />
       <DialogLogin open={modalIsOpen} onClose={closeModal} />
+      <Footer />
     </>
   );
 }

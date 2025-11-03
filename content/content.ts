@@ -1,9 +1,10 @@
-import type { ComponentType } from "react";
+import type { Component, ComponentType } from "react";
 import { HomeIcon } from "@/components/icons/home";
 import Spoon from "@/components/icons/spoon";
 import Coffee from "@/components/icons/coffee";
 import Dish from "@/components/icons/dish";
 import NestedLove from "@/components/icons/nested-love";
+import { Instagram, MailIcon, Twitter } from "lucide-react";
 
 type ButtonHeroContentType = {
   title: string;
@@ -54,5 +55,40 @@ export const ProductTypeContent: ProductTypeContentType[] = [
   {
     title: "Toko Kelontong",
     img: "/images/mini-market-image.png",
+  },
+];
+
+type FooterIconsType = {
+  icon: ComponentType<{ className?: string }>;
+};
+
+export const FooterIcons: FooterIconsType[] = [
+  {
+    icon: Instagram,
+  },
+  {
+    icon: MailIcon,
+  },
+  {
+    icon: Twitter,
+  },
+];
+
+export const FooterContent = [
+  {
+    title: "Qoin.in",
+    content: ["Jelajahi UMKM", "Promo & Diskon", "Artikel", "Top 100 UMKM"],
+  },
+  {
+    title: "Untuk Pengguna",
+    content: ["Cara Ambil Pesanan", "Cara Pengantaran", "Poin Qoin"],
+  },
+  {
+    title: "Untuk Merchant",
+    content: ["Gabung Jadi Merchant", "Panduan Merchant"],
+  },
+  {
+    title: "Bantuan",
+    content: ["Pusat Bantuan", "Kebijakan Privasi", "Syarat & Ketentuan"],
   },
 ];
