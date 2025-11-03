@@ -5,7 +5,7 @@ const Mail = ({ className }: { className?: string }) => {
       width="22"
       height="17"
       viewBox="0 0 22 17"
-      fill="none"
+      fill="currentColor"
       className={className}
     >
       <path
