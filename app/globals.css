@@ -19,6 +19,9 @@
   --font-primary: var(--font-urbanist), system-ui, sans-serif;
   --animate-marquee: marquee 25s linear infinite;
   --animate-marquee-reverse: marquee 25s linear infinite reverse;
+
+  --animate-marquee-sm: marquee 10s linear infinite;
+  --animate-marquee-sm-reverse: marquee 10s linear infinite reverse;
 }
 
 @theme inline {
@@ -162,7 +165,42 @@
     @apply bg-background text-foreground font-sans;
   }
   /* Ensure form controls inherit the global font */
-  button, input, select, textarea {
+  button,
+  input,
+  select,
+  textarea {
     font: inherit;
   }
+}
+
+/* Shiny hover sweep effect utility */
+.shiny-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shiny-sweep::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: -50%;
+  right: -50%;
+
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgb(255 255 255 / 0.55) 50%,
+    transparent 70%
+  );
+
+  transform: translateX(-130%) rotate(10deg);
+  transition: transform 8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  z-index: 1; /* di atas konten tombol */
+  will-change: transform;
+}
+
+.shiny-sweep:hover::after {
+  transform: translateX(130%) rotate(10deg); /* bergerak kiri→kanan */
 }

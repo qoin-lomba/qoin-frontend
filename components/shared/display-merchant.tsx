@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "../ui/card";
-import { Badge } from "../ui/badge";
 import { Heart } from "lucide-react";
 import useClickLike from "@/hooks/landing-page/use-click-like";
 import RatingStar from "../icons/rating-star";
@@ -12,7 +11,7 @@ const DisplayMerchant = () => {
 
   return (
     <Card className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary">
-      <CardHeader className="!p-0 relative overflow-hidden lg:size-[304px] size-full h-[200px]">
+      <CardHeader className="!p-0 relative overflow-hidden lg:size-[304px] size-full h-[180px] md:h-[220px]">
         <div
           className={`size-10 absolute top-3 right-10  ${
             isLiked ? "bg-primary" : "bg-[#FFD6A7]"
@@ -34,24 +33,24 @@ const DisplayMerchant = () => {
       </CardHeader>
       <CardContent className="lg:px-4 lg:pb-4 px-3 pb-3">
         <div className="text-[#8D8D8D] flex items-center gap-2">
-          <p>1.20 km</p>
+          <p className="text-xs md:text-base">1.20 km</p>
           <p className="text-xl lg:text-2xl">•</p>
-          <p>10-20 menit</p>
+          <p className="text-xs md:text-base">10-20 menit</p>
         </div>
         <div className="space-y-3">
-          <p className="text-xl lg:text-2xl font-semibold text-secondary ">
+          <p className="text-lg md:text-xl lg:text-2xl font-semibold text-secondary ">
             Warung Makan Bu Siti
           </p>
 
           <div>
             <div className="flex items-center text-[#606060]">
               <span className="size-[30px] relative flex items-center justify-center">
-                <RatingStar className="size-3 lg:size-[18px] text-[#F8C600]" />
+                <RatingStar className="text- lg:size-[18px] text-[#F8C600]" />
               </span>
-              <p className="ml-2">4.5 </p>
-              <p className="ml-3">(100) Ulasan</p>
+              <p className="ml-2 text-xs md:text-base">4.5 </p>
+              <p className="ml-3 text-xs md:text-base">(100) Ulasan</p>
             </div>
-            <p className="text-primary lg:text-lg font-bold mt-3">
+            <p className="text-primary text-sm md:text-base lg:text-lg font-bold mt-3">
               Mulai dari Rp. 15.000
             </p>
           </div>
