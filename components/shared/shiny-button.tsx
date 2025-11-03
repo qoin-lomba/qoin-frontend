@@ -9,7 +9,7 @@ const ShinyButton = ({
 }: {
   children: React.ReactNode;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }) => {
   return (
     <Button
