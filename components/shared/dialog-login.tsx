@@ -28,17 +28,23 @@ const DialogLogin = ({ open, onClose }: DialogLoginProps) => {
             alt="Logo"
             className="mx-auto"
           />
-          <DialogTitle className="font-bold text-3xl text-secondary text-center">
+          <DialogTitle className="font-bold text-base lg:text-3xl text-secondary text-center">
             Masuk dulu yuk, biar bisa dukung UMKM favoritmu
           </DialogTitle>
         </DialogHeader>
-        <BorderButton className="w-100 mx-auto" icon={<GoogleIcon />}>
+        <BorderButton
+          className="lg:w-100 w-70 mx-auto text-sm md:text-md"
+          icon={<GoogleIcon />}
+        >
           Lanjut dengan google
         </BorderButton>
-        <BorderButton className="w-100 mx-auto" icon={<Mail />}>
+        <BorderButton
+          className="lg:w-100 w-70 mx-auto text-sm md:text-base"
+          icon={<Mail />}
+        >
           Lanjut dengan email
         </BorderButton>
-        <DialogFooter className="text-center mt-8">
+        <DialogFooter className="text-center text-xs mt-8">
           Dengan melanjutkan, kamu menyetujui Syarat & Ketentuan kami dan
           mengonfirmasi bahwa kamu telah membaca Kebijakan Privasi dan Cookie
           kami.

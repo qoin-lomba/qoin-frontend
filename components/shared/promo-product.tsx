@@ -15,13 +15,13 @@ import Discount from "../icons/discount";
 const PromoProduct = () => {
   return (
     <Card className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary">
-      <CardHeader className="!p-0 relative overflow-hidden h-[251px] ">
+      <CardHeader className="p-0 relative overflow-hidden lg:h-[251px] ">
         <Image
           src={"/images/promo-img.png"}
           alt={"Foto"}
           width={100}
           height={100}
-          className="w-full h-[251px] bg-contain overflow-hidden group-hover:scale-[117%] transition-all duration-500"
+          className="w-full lg:h-[251px] h-full  bg-contain overflow-hidden group-hover:scale-[117%] transition-all duration-500 "
         />
 
         <Badge className="bg-[linear-gradient(285deg,#FFC684_32.21%,#FFE5AC_54.97%,#FFCE96_74.75%)] absolute text-secondary font-bold mt-4 ml-2 text-base">
@@ -29,20 +29,20 @@ const PromoProduct = () => {
           <p>Hemat 33%</p>
         </Badge>
       </CardHeader>
-      <CardContent className="px-4">
+      <CardContent className="px-4 ">
         <div className="text-[#8D8D8D] flex items-center gap-2">
-          <p>1.20 km</p>
+          <p className="text-xs md:text-base">1.20 km</p>
           <p className="text-2xl">•</p>
-          <p>10-20 menit</p>
+          <p className="text-xs md:text-base">10-20 menit</p>
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <Store />
-            <p className="lg:font-medium text-[#8D8D8D]">
+            <Store className="text-xs md:text-base w-3" />
+            <p className="lg:font-medium text-xs md:text-base text-[#8D8D8D]">
               Warung makan bu siti
             </p>
           </div>
-          <CardTitle className="lg:font-medium  text-lg lg:text-xl">
+          <CardTitle className="lg:font-medium  text-base md:text-lg lg:text-xl">
             Nasi Goreng Udang
           </CardTitle>
         </div>
@@ -50,7 +50,7 @@ const PromoProduct = () => {
           <p className="lg:text-lg lg:font-semibold text-[#8D8D8D]">
             Rp. 30.000
           </p>
-          <p className="text-primary lg:font-semibold  text-xl lg:text-2xl">
+          <p className="text-primary lg:font-semibold text-base md:text-lg lg:text-2xl">
             Rp. 24.000
           </p>
         </div>

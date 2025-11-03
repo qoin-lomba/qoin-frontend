@@ -10,7 +10,7 @@ const HeroSection = () => {
     <Section className="mt-[50px]">
       <PageContainer>
         <header className="flex flex-col items-center max-w-[741px] mx-auto text-center">
-          <h1 className="text-secondary text-[40px] font-extrabold">
+          <h1 className="text-secondary lg:text-[40px] text-[28px] font-extrabold">
             Yuk, dukung produk lokal bareng!
           </h1>
           <h2 className="text-[#8D8D8D] text-[22px]">

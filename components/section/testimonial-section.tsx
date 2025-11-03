@@ -12,9 +12,11 @@ const TestimonialSection = () => {
           <div>
             <FluentChat />
           </div>
-          <div className="w-[481px] text-white space-y-3">
-            <h1 className="text-[80px] font-extrabold">Apa Kata Mereka 👀</h1>
-            <p className="text-[25px] font-semibold">
+          <div className="lg:w-[481px] max-w-[481px] text-white space-y-3">
+            <h1 className="lg:text-[80px] text-6xl font-extrabold">
+              Apa Kata Mereka 👀
+            </h1>
+            <p className="lg:text-[25px] text-xl font-semibold">
               Cerita-cerita seru dari mereka yang udah dukung produk lokal!
             </p>
           </div>
@@ -22,14 +24,14 @@ const TestimonialSection = () => {
         </header>
         <article className="space-y-10 overflow-hidden shrink-0 mt-8 lg:mt-0">
           <div className="overflow-hidden">
-            <div className="flex shrink-0 gap-8 animate-marquee">
+            <div className="flex shrink-0 gap-8 lg:animate-marquee animate-marquee-sm">
               {Array.from({ length: 10 }).map((_, index) => (
                 <CommentCard key={index} />
               ))}
             </div>
           </div>
           <div className="overflow-hidden">
-            <div className="flex shrink-0 gap-8 animate-marquee-reverse">
+            <div className="flex shrink-0 gap-8 lg:animate-marquee-reverse animate-marquee-sm-reverse">
               {Array.from({ length: 10 }).map((_, index) => (
                 <CommentCard key={index} />
               ))}

@@ -1,4 +1,3 @@
-import useOpenModal from "@/hooks/landing-page/use-open-modal";
 import LogoIcon from "../icons/logo";
 import BorderButton from "../shared/border-button";
 import PageContainer from "../shared/page-container";
@@ -34,7 +33,6 @@ const Header = ({ openModal }: HeaderProps) => {
               <li>Beranda</li>
               <li>Jelajahi UMKM</li>
               <li>Top 100 UMKM</li>
-              <li>Ulasan</li>
             </ul>
           </div>
           <div>
@@ -79,7 +77,6 @@ const Header = ({ openModal }: HeaderProps) => {
                   <li>Beranda</li>
                   <li>Jelajahi UMKM</li>
                   <li>Top 100 UMKM</li>
-                  <li>Ulasan</li>
                 </ul>
                 <div className="mt-6 flex flex-col gap-3">
                   <BorderButton

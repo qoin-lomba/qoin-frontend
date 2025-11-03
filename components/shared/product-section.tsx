@@ -2,6 +2,7 @@ import { ProductTypeContentType } from "@/content/content";
 import DisplayProductTypeItem from "./display-product-type-item";
 import DisplayMerchant from "./display-merchant";
 import PromoProduct from "./promo-product";
+import InspiratedItem from "./inspirated-item";
 
 interface ProductSectionProps {
   title?: string;
@@ -9,6 +10,7 @@ interface ProductSectionProps {
   products?: ProductTypeContentType[];
   isExplore?: boolean;
   isPromo?: boolean;
+  isInspirated?: boolean;
 }
 
 const ProductSection = ({
@@ -17,40 +19,54 @@ const ProductSection = ({
   products,
   isExplore,
   isPromo,
+  isInspirated,
 }: ProductSectionProps) => {
   return (
     <>
       <div className="space-y-3 mt-15 mb-7.5">
         <h1
-          className={`text-3xl font-extrabold ${
+          className={`lg:text-3xl md:text-2xl text-xl font-extrabold ${
             isPromo ? "text-white" : "text-secondary"
           }`}
         >
           {title}
         </h1>
         <p
-          className={` text-[22px] ${
+          className={` lg:text-[22px] md:text-lg text-base ${
             isPromo ? "text-white" : "text-[#606060]"
           }`}
         >
           {description}
         </p>
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 ">
-        {isExplore &&
-          Array.from({ length: 4 }).map((_, idx) => (
-            <DisplayMerchant key={idx} />
-          ))}
 
-        {isPromo &&
-          Array.from({ length: 4 }).map((_, idx) => <PromoProduct key={idx} />)}
-
-        {!isExplore &&
-          !isPromo &&
-          products?.map((item, idx) => (
-            <DisplayProductTypeItem key={idx} {...item} />
+      {isInspirated && (
+        <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 ">
+          {Array.from({ length: 3 }).map((_, idx) => (
+            <InspiratedItem key={idx} />
           ))}
-      </div>
+        </div>
+      )}
+
+      {!isInspirated && (
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 ">
+          {isExplore &&
+            Array.from({ length: 4 }).map((_, idx) => (
+              <DisplayMerchant key={idx} />
+            ))}
+
+          {isPromo &&
+            Array.from({ length: 4 }).map((_, idx) => (
+              <PromoProduct key={idx} />
+            ))}
+
+          {!isExplore &&
+            !isPromo &&
+            products?.map((item, idx) => (
+              <DisplayProductTypeItem key={idx} {...item} />
+            ))}
+        </div>
+      )}
     </>
   );
 };
