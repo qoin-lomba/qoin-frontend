@@ -31,7 +31,7 @@ const DisplayMerchant = () => {
           className="bg-contain overflow-hidden group-hover:scale-[117%] transition-all duration-500"
         />
       </CardHeader>
-      <CardContent className="lg:px-4 lg:pb-4 px-3 pb-3">
+      <CardContent className="lg:px-4 lg:pb-4 px-3 pb-3 -mt-5">
         <div className="text-[#8D8D8D] flex items-center gap-2">
           <p className="text-xs md:text-base">1.20 km</p>
           <p className="text-xl lg:text-2xl">•</p>

@@ -16,7 +16,7 @@ const DisplayProductTypeItem = ({
         alt={title}
         width={100}
         height={100}
-        className="w-full h-full object-contain rounded-[35px] group-hover:scale-[117%] transition-all duration-500"
+        className="w-full h-full object-cover rounded-[35px] group-hover:scale-[117%] transition-all duration-500"
       />
       <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(184,75,0,0)_36.35%,rgba(184,75,0,0.8)_100%)]" />
 

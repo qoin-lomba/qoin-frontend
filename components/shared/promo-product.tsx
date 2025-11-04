@@ -29,7 +29,7 @@ const PromoProduct = () => {
           <p>Hemat 33%</p>
         </Badge>
       </CardHeader>
-      <CardContent className="px-4 ">
+      <CardContent className="px-4 -mt-8 lg:-mt-0 ">
         <div className="text-[#8D8D8D] flex items-center gap-2">
           <p className="text-xs md:text-base">1.20 km</p>
           <p className="text-2xl">•</p>
@@ -42,11 +42,11 @@ const PromoProduct = () => {
               Warung makan bu siti
             </p>
           </div>
-          <CardTitle className="lg:font-medium  text-base md:text-lg lg:text-xl">
+          <CardTitle className="lg:font-medium  text-start text-base md:text-lg lg:text-xl">
             Nasi Goreng Udang
           </CardTitle>
         </div>
-        <div className="space-y-1">
+        <div className="space-y-1 text-start">
           <p className="lg:text-lg lg:font-semibold text-[#8D8D8D]">
             Rp. 30.000
           </p>

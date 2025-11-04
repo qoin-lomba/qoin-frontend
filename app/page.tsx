@@ -16,6 +16,7 @@ import useOpenModal from "@/hooks/landing-page/use-open-modal";
 
 export default function Home() {
   const { closeModal, modalIsOpen, openModal } = useOpenModal();
+
   return (
     <>
       <Header openModal={openModal} />
