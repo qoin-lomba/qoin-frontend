@@ -92,3 +92,37 @@ export const FooterContent = [
     content: ["Pusat Bantuan", "Kebijakan Privasi", "Syarat & Ketentuan"],
   },
 ];
+
+export interface MerchantProducts {
+  id: number;
+  title: string;
+  price: number;
+  rating?: number;
+  description?: string;
+  img?: string;
+}
+
+export const merchantProducts: MerchantProducts[] = [
+  {
+    id: 1,
+    title: "Nasi Goreng Spesial",
+    price: 12000,
+    rating: 4.5,
+    description: "Nasi goreng dengan bumbu spesial dan tambahan telur.",
+  },
+  {
+    id: 2,
+    title: "Ayam Goyeng ",
+    description:
+      "Ayam goyeng garing di luar, juicy di dalam. Simpel tapi nikmatnya nggak sederhana!",
+    price: 15000,
+    rating: 4.7,
+  },
+  {
+    id: 3,
+    title: "Mie Goreng",
+    price: 13000,
+    rating: 4.6,
+    description: "Mie goreng dengan bumbu spesial dan sayuran segar.",
+  },
+];

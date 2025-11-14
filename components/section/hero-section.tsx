@@ -4,21 +4,36 @@ import BorderButton from "../shared/border-button";
 import PageContainer from "../shared/page-container";
 import Section from "../shared/section";
 import SearchInput from "../shared/search-point";
-
+import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <Section className="mt-[50px]">
       <PageContainer>
         <header className="flex flex-col items-center max-w-[741px] mx-auto text-center">
-          <h1 className="text-secondary lg:text-[40px] text-[28px] font-extrabold">
+          <motion.h1
+            className="text-secondary lg:text-[40px] text-[28px] font-extrabold"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             Yuk, dukung produk lokal bareng!
-          </h1>
-          <h2 className="text-[#8D8D8D] text-[22px]">
+          </motion.h1>
+          <motion.h2
+            className="text-[#8D8D8D] text-[22px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Temuin makanan, minuman, atau jasa lokal yang gak kalah keren sama
             brand besar
-          </h2>
+          </motion.h2>
         </header>
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-5 mt-[13px]">
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-5 mt-[13px]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <AnimatedButton />
 
           {ButtonHeroContent.map((item, idx) => (
@@ -30,10 +45,14 @@ const HeroSection = () => {
               {item.title}
             </BorderButton>
           ))}
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <SearchInput />
-        </div>
+        </motion.div>
       </PageContainer>
     </Section>
   );

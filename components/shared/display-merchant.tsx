@@ -11,9 +11,9 @@ const DisplayMerchant = () => {
 
   return (
     <Card className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary">
-      <CardHeader className="!p-0 relative overflow-hidden lg:size-[304px] size-full h-[180px] md:h-[220px]">
+      <CardHeader className="!p-0 relative overflow-hidden w-full size-full h-[180px] md:h-[220px]">
         <div
-          className={`size-10 absolute top-3 right-10  ${
+          className={`size-10 absolute top-3 right-3  ${
             isLiked ? "bg-primary" : "bg-[#FFD6A7]"
           } rounded-full flex items-center justify-center z-100 `}
           onClick={toggleLike}
