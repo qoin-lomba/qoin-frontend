@@ -2,18 +2,24 @@
 
 import { Sidebar } from "@/app/dashboard/components/dashboard/sidebar";
 import useChangePage from "@/hooks/dashboard/use-change-page";
-import { OverviewPage } from "./components/pages/overview-page";
-import { POSPage } from "./components/pages/pos-page";
-import { InventoryPage } from "./components/pages/inventory-page";
-import { SalesPage } from "./components/pages/sales-page";
-import { AnalyticsPage } from "./components/pages/analytics-page";
+import { OverviewPage } from "../components/pages/overview-page";
+import { POSPage } from "../components/pages/pos-page";
+import { InventoryPage } from "../components/pages/inventory-page";
+import { SalesPage } from "../components/pages/sales-page";
+import { AnalyticsPage } from "../components/pages/analytics-page";
 import useHandleSidebar from "@/hooks/dashboard/use-handle-sidebar";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import useGetMerchantById from "@/hooks/merchant/use-get-merchant-by-id";
 
-const DashboardPage = () => {
+export default function DashboardClient({
+  merchantId,
+}: {
+  merchantId: string;
+}) {
   const { activePage, handlePage } = useChangePage();
   const { isSidebarOpen, toggleSidebar } = useHandleSidebar();
+  const { merchant } = useGetMerchantById(merchantId);
 
   let content;
 
@@ -22,7 +28,7 @@ const DashboardPage = () => {
   } else if (activePage === "pos") {
     content = <POSPage />;
   } else if (activePage === "inventory") {
-    content = <InventoryPage />;
+    content = <InventoryPage merchant={merchant} />;
   } else if (activePage === "sales") {
     content = <SalesPage />;
   } else if (activePage === "analytics") {
@@ -75,6 +81,4 @@ const DashboardPage = () => {
       </main>
     </div>
   );
-};
-
-export default DashboardPage;
+}

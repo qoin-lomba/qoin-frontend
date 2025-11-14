@@ -3,15 +3,25 @@
 import { useState } from "react";
 
 const useOpenModal = () => {
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<null | string>(null);
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  const signUpIsOpen = modalIsOpen === "signup";
+  const signInIsOpen = modalIsOpen === "signin";
+  const defaultModalIsOpen = modalIsOpen === "default";
+
+  const openModal = (open: string) => setModalIsOpen(open);
+  const closeModal = () => setModalIsOpen(null);
+
+  const onCloseSignup = () => setModalIsOpen(null);
 
   return {
     modalIsOpen,
     openModal,
     closeModal,
+    signUpIsOpen,
+    signInIsOpen,
+    defaultModalIsOpen,
+    onCloseSignup,
   };
 };
 

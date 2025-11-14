@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import QueryProvider from "@/components/shared/QueryProvider";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${urbanist.variable}`}>
       <body className={`antialiased`}>
-        <Toaster position="bottom-right" richColors />
-        {children}
+        <QueryProvider>
+          <Toaster position="bottom-right" richColors />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

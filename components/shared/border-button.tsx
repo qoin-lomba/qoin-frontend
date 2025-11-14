@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"; // shadcn
 import { ComponentProps, ReactNode } from "react";
 

@@ -15,10 +15,22 @@
   }
 }
 
+@keyframes top-marquee {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
 @theme {
   --font-primary: var(--font-urbanist), system-ui, sans-serif;
   --animate-marquee: marquee 25s linear infinite;
   --animate-marquee-reverse: marquee 25s linear infinite reverse;
+  --animate-top-marquee: top-marquee 25s linear infinite;
+  --animate-top-marquee-reverse: top-marquee 25s linear infinite reverse;
 
   --animate-marquee-sm: marquee 10s linear infinite;
   --animate-marquee-sm-reverse: marquee 10s linear infinite reverse;

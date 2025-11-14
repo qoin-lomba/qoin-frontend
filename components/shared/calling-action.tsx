@@ -6,7 +6,7 @@ import Section from "./section";
 import ShinyButton from "./shiny-button";
 
 interface CallingActionProps {
-  openModal?: () => void;
+  openModal: (open: string) => void;
 }
 const CallingAction = ({ openModal }: CallingActionProps) => {
   return (
@@ -25,7 +25,10 @@ const CallingAction = ({ openModal }: CallingActionProps) => {
             <p className="md:text-lg lg:text-[22px] font-medium">
               Yuk, jadi bagian dari komunitas yang dukung UMKM lokal!
             </p>
-            <ShinyButton className="mt-[35px]" onClick={openModal}>
+            <ShinyButton
+              className="mt-[35px]"
+              onClick={() => openModal("default")}
+            >
               Gabung Sekarang
             </ShinyButton>
           </CardContent>
