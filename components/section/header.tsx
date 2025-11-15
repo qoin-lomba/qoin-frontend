@@ -25,13 +25,13 @@ import {
 } from "../ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import useLogout from "@/hooks/auth/use-logout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   openModal?: (open: string) => void;
   isLoading?: boolean;
 }
-const Header = ({ openModal, isLoading }: HeaderProps) => {
+const Header = ({ openModal }: HeaderProps) => {
   const router = useRouter();
   const { data, isError, isLoading: isUserLoading } = useGetUser();
   const { handleLogout, isPending } = useLogout();
@@ -61,6 +61,17 @@ const Header = ({ openModal, isLoading }: HeaderProps) => {
 
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const initialBranch: "auth" | "guest" = isAuthenticated ? "auth" : "guest";
+
+  const showSkeleton = mounted ? isHydrating : false;
+  const showAuth = mounted ? isAuthenticated && !isHydrating : initialBranch === "auth";
+
   return (
     <Section className="mx-auto border-b">
       <PageContainer>
@@ -81,16 +92,19 @@ const Header = ({ openModal, isLoading }: HeaderProps) => {
             </ul>
           </div>
           <div>
-            {isHydrating ? (
+            {showSkeleton ? (
               <div className="flex items-center gap-5">
                 <div className="h-12 w-[190px] rounded-2xl border animate-pulse bg-gray-100" />
                 <div className="h-10 w-10 rounded-full animate-pulse bg-gray-100" />
                 <div className="h-12 w-12 rounded-full animate-pulse bg-gray-100" />
               </div>
-            ) : isAuthenticated ? (
+            ) : showAuth ? (
               <div className="flex items-center gap-5">
                 <div className="flex items-center gap-3 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2">
-                  <div className="grid place-items-center h-9 w-9 rounded-full bg-orange-100">
+                  <div
+                    className="grid place-items-center h-9 w-9 rounded-full bg-orange-100"
+                    suppressHydrationWarning
+                  >
                     <DollarCoin className="text-primary" />
                   </div>
                   <div className="leading-tight">
@@ -200,12 +214,12 @@ const Header = ({ openModal, isLoading }: HeaderProps) => {
                   <li>Top 100 UMKM</li>
                 </ul>
                 <div className="mt-6 flex flex-col gap-3">
-                  {isHydrating ? (
+                  {showSkeleton ? (
                     <div className="flex items-center justify-between gap-4">
                       <div className="h-12 flex-1 rounded-2xl border animate-pulse bg-gray-100" />
                       <div className="h-10 w-10 rounded-full animate-pulse bg-gray-100" />
                     </div>
-                  ) : isAuthenticated ? (
+                  ) : showAuth ? (
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 rounded-2xl border border-orange-200 bg-orange-50 px-3 py-2">
                         <div className="grid place-items-center h-8 w-8 rounded-full bg-orange-100">

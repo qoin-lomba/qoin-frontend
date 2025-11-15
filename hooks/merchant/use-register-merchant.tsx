@@ -10,6 +10,8 @@ export interface MerchantFormData {
   type: string;
   location: string;
   description: string;
+  google_maps_url?: string;
+  iframe_map_url?: string;
   profile_photo: File | null;
   profile_photo_preview: string;
   banner_img: File | null;
@@ -66,6 +68,14 @@ const convertToFormData = (values: MerchantFormData) => {
   formData.append("type", values.type);
   formData.append("location", values.location);
   formData.append("description", values.description);
+
+  if (values.google_maps_url) {
+    formData.append("google_maps_url", values.google_maps_url);
+  }
+
+  if (values.iframe_map_url) {
+    formData.append("iframe_map_url", values.iframe_map_url);
+  }
 
   if (values.latitude !== undefined) {
     formData.append("latitude", values.latitude.toString());
@@ -130,6 +140,8 @@ const useRegisterMerchant = () => {
       type: "",
       location: "",
       description: "",
+      google_maps_url: "",
+      iframe_map_url: "",
       profile_photo: null,
       profile_photo_preview: "",
       banner_img: null,

@@ -6,6 +6,7 @@ export interface Stock {
   photo_url: string;
   price: number;
   quantity: number;
+  description: string;
   created_at: string; // ISO string (Date.toISOString())
   updated_at: string;
 }
@@ -30,6 +31,7 @@ export interface Merchant {
   updated_at: string;
   latitude: number;
   longitude: number;
+  google_map_url: string | null;
 
   // Relations
   stocks: Stock[];
@@ -48,4 +50,17 @@ export interface SelledStock {
   created_at: string;
   updated_at: string;
   stock?: Stock;
+}
+
+export interface DisplayMerchantType {
+  id: string;
+  name: string;
+  profilePhotoUrl: string | null;
+  minPrice?: number | null;
+}
+
+export interface DisplayMerchantResponse {
+  message: string;
+  status: string;
+  data: DisplayMerchantType[];
 }

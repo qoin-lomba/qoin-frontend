@@ -28,8 +28,12 @@ const useGetMerchantById = (overrideId?: string) => {
         console.log(err);
       }
     },
-    queryKey: ["merchant"],
+    // Include merchantId in the key so each merchant has its own cache
+    queryKey: ["merchant", merchantId],
     enabled,
+    // Always refetch when a different merchant page mounts
+    refetchOnMount: "always",
+    refetchOnReconnect: true,
   });
   const merchant: Merchant | null = data?.data ?? null;
 

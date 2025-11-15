@@ -15,6 +15,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type OrderItem = {
   id: string;
@@ -84,6 +85,7 @@ const StepItem = ({ icon, title, desc, active, idx }: StepItemProps) => {
 };
 
 const DriverPage = ({ merchantName }: DriverPageProps) => {
+  const router = useRouter();
   const [items, setItems] = useState<OrderItem[]>([]);
   const [activeSteps, setActiveSteps] = useState<boolean[]>(() =>
     new Array(stepItem.length).fill(false)
@@ -300,6 +302,23 @@ const DriverPage = ({ merchantName }: DriverPageProps) => {
               mendukung UMKM favoritmu.
             </DialogDescription>
           </DialogHeader>
+          <button
+            className="mt-4 w-full rounded-full bg-primary py-2 text-sm md:text-base lg:text-lg font-semibold text-white"
+            onClick={() => {
+              try {
+                localStorage.removeItem("orderStatus");
+                localStorage.removeItem("qoin.cart");
+                localStorage.removeItem("grandTotal")
+              } catch (err) {
+                console.log(err);
+              }
+
+              setShowArrivedDialog(false);
+              router.push("/");
+            }}
+          >
+            Selesai
+          </button>
         </DialogContent>
       </Dialog>
     </div>

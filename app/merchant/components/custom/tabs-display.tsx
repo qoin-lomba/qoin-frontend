@@ -74,7 +74,10 @@ const TabsDisplay = ({
         </div>
       </Tabs>
       <div className="grid grid-cols-4 col-span-3 lg:col-span-1 lg:space-y-4">
-        <AsideCard className="col-span-4 h-100 " />
+        <AsideCard
+          className="col-span-4 min-h-100 "
+          location={merchant?.location}
+        />
         <CartCard
           className="col-span-4"
           cart={cart}

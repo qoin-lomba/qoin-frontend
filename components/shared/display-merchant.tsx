@@ -5,12 +5,28 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import { Heart } from "lucide-react";
 import useClickLike from "@/hooks/landing-page/use-click-like";
 import RatingStar from "../icons/rating-star";
+import { DisplayMerchantType } from "@/types";
+import { useRouter } from "next/navigation";
 
-const DisplayMerchant = () => {
+interface displayMerchantProps {
+  displayMerchant?: DisplayMerchantType;
+  isLoading?: boolean;
+}
+
+const DisplayMerchant = ({
+  displayMerchant,
+  isLoading,
+}: displayMerchantProps) => {
+  const router = useRouter();
   const { isLiked, toggleLike } = useClickLike();
-
+  const handleToMerchant = (id: string) => {
+    router.push(`/merchant/${id}`);
+  };
   return (
-    <Card className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary">
+    <Card
+      className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary cursor-pointer"
+      onClick={() => handleToMerchant(displayMerchant?.id as string)}
+    >
       <CardHeader className="!p-0 relative overflow-hidden w-full size-full h-[180px] md:h-[220px]">
         <div
           className={`size-10 absolute top-3 right-3  ${
@@ -25,7 +41,7 @@ const DisplayMerchant = () => {
           />
         </div>
         <Image
-          src={"/images/cafe-image.png"}
+          src={displayMerchant?.profilePhotoUrl || "/images/profile-img.png"}
           alt="Toko"
           fill
           className="bg-contain overflow-hidden group-hover:scale-[117%] transition-all duration-500"
@@ -38,8 +54,8 @@ const DisplayMerchant = () => {
           <p className="text-xs md:text-base">10-20 menit</p>
         </div>
         <div className="space-y-3">
-          <p className="text-lg md:text-xl lg:text-2xl font-semibold text-secondary ">
-            Warung Makan Bu Siti
+          <p className="text-lg md:text-xl lg:text-2xl font-semibold text-secondary line-clamp-1">
+            {displayMerchant?.name}
           </p>
 
           <div>
@@ -51,7 +67,9 @@ const DisplayMerchant = () => {
               <p className="ml-3 text-xs md:text-base">(100) Ulasan</p>
             </div>
             <p className="text-primary text-sm md:text-base lg:text-lg font-bold mt-3">
-              Mulai dari Rp. 15.000
+              {displayMerchant?.minPrice != null
+                ? `Mulai dari Rp. ${displayMerchant.minPrice.toLocaleString("id-ID")}`
+                : "Mulai dari Rp. -"}
             </p>
           </div>
         </div>

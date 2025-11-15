@@ -19,31 +19,42 @@ type MerchantItemProps = Pick<
 >;
 
 const MerchantItem = ({ id, name, profilePhotoUrl }: MerchantItemProps) => {
+  const router = useRouter();
   return (
-    <Link href={`/merchant/${id}`} className="block">
-      <Card className="hover:shadow-md transition-shadow">
-        <CardContent className="pt-6 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="relative h-14 w-14 rounded-full overflow-hidden bg-muted">
-              <Image
-                src={profilePhotoUrl ?? "/images/profile-img.png"}
-                alt={`Merchant ${name}`}
-                fill
-                className="object-cover"
-                sizes="56px"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold leading-tight">
-                {name}
-              </span>
-              <span className="text-xs text-muted-foreground">ID: {id}</span>
-            </div>
+    <Card className="hover:shadow-md transition-shadow">
+      <CardContent className="pt-6 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="relative h-14 w-14 rounded-full overflow-hidden bg-muted">
+            <Image
+              src={profilePhotoUrl ?? "/images/profile-img.png"}
+              alt={`Merchant ${name}`}
+              fill
+              className="object-cover"
+              sizes="56px"
+            />
           </div>
-          <span className="text-xs text-primary">Lihat toko →</span>
-        </CardContent>
-      </Card>
-    </Link>
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold leading-tight">{name}</span>
+            <span className="text-xs text-muted-foreground">ID: {id}</span>
+          </div>
+        </div>
+        <div className="space-x-4  ">
+          <Button
+            onClick={() => router.push(`/merchant/${id}`)}
+            className="text-base text-white"
+          >
+            Lihat Toko →
+          </Button>
+
+          <Button
+            onClick={() => router.push(`/dashboard/${id}`)}
+            className="text-base text-white"
+          >
+            Lihat Dashboard →
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

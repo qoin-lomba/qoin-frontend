@@ -1,10 +1,10 @@
 import type { Component, ComponentType } from "react";
 import { HomeIcon } from "@/components/icons/home";
 import Spoon from "@/components/icons/spoon";
-import Coffee from "@/components/icons/coffee";
-import Dish from "@/components/icons/dish";
 import NestedLove from "@/components/icons/nested-love";
 import { Instagram, MailIcon, Twitter } from "lucide-react";
+import Store from "@/components/icons/store";
+import { Briefcase } from "lucide-react";
 
 type ButtonHeroContentType = {
   title: string;
@@ -21,15 +21,15 @@ export const ButtonHeroContent: ButtonHeroContentType[] = [
     icon: Spoon,
   },
   {
-    title: "Minuman",
-    icon: Coffee,
+    title: "Toko Kelontong",
+    icon: Store,
   },
   {
     title: "Jasa",
-    icon: Dish,
+    icon: Briefcase,
   },
   {
-    title: "Kerajinan",
+    title: "Fashion",
     icon: NestedLove,
   },
 ];

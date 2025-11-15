@@ -3,21 +3,21 @@
 import axiosInstance from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetUserMerchant = () => {
-  const { data, isLoading } = useQuery({
+const useGetDisplayMerchant = () => {
+  const { data: displayMerchant, isLoading } = useQuery({
     queryFn: async () => {
-      const response = await axiosInstance.get("/api/merchant/user");
+      const response = await axiosInstance.get("/api/merchant/display");
       return response.data;
     },
-    queryKey: ["merchant"],
+    queryKey: ["displayMerchant"],
     refetchOnMount: "always",
     refetchOnReconnect: true,
   });
 
   return {
-    merchant: data,
+    displayMerchant,
     isLoading,
   };
 };
 
-export default useGetUserMerchant;
+export default useGetDisplayMerchant;
