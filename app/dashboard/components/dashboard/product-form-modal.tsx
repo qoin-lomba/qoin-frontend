@@ -32,7 +32,7 @@ export function ProductFormModal({
         if (!open) onClose();
       }}
     >
-      <DialogContent className="w-full max-w-md max-h-[85vh] overflow-y-auto" >
+      <DialogContent className="w-full max-w-md max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add Product</DialogTitle>
         </DialogHeader>
@@ -45,6 +45,20 @@ export function ProductFormModal({
               type="text"
               value={formik.values.name}
               name="name"
+              onChange={formik.handleChange}
+              className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground mt-1"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-foreground">
+              Description
+            </label>
+            <input
+              type="text"
+              value={formik.values.description}
+              name="description"
               onChange={formik.handleChange}
               className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground mt-1"
               required
@@ -74,7 +88,7 @@ export function ProductFormModal({
             />
           </div>
           <ImageUploadField
-            label="Logo / Foto Profil Toko"
+            label="Foto Produk"
             helperText="Gunakan foto yang jelas dan menarik. Recommended 400x400px"
             onImageSelect={(file, preview) => {
               formik.setFieldValue("product_photo", file);

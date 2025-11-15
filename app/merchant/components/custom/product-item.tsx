@@ -8,6 +8,7 @@ interface ProductItemProps {
   name: string;
   price: number;
   photo_url: string;
+  description: string;
   handleProduct: (productId: string) => void;
 }
 
@@ -16,6 +17,7 @@ const ProductItem = ({
   name,
   price,
   photo_url,
+  description,
   handleProduct,
 }: ProductItemProps) => {
   return (
@@ -25,7 +27,7 @@ const ProductItem = ({
           {name}
         </h3>
         <p className="lg:text-lg text-xs text-gray-500 max-w-[300px] lg:max-w-[500px] leading-snug my-3">
-          Ini makanan enak banget asli ga boong
+          {description ?? "-"}
         </p>
         <div className="flex items-center gap-2 mt-1">
           <span className="text-yellow-500">★</span>

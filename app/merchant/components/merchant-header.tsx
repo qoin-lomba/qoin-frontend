@@ -12,6 +12,8 @@ import useClickLike from "@/hooks/landing-page/use-click-like";
 import { Merchant } from "@/types";
 import { Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type MerchantInfo = {
   amount: number | string | undefined;
@@ -31,6 +33,7 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
     { amount: merchant?.total_follower ?? 0, text: "Pengikut" },
   ];
   const { isLiked, toggleLike } = useClickLike();
+  const router = useRouter();
   return (
     <Section className="!px-0">
       <PageContainer>
@@ -98,13 +101,7 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
                           Terverifikasi
                         </p>
                       </Badge>
-                    ) : // <Badge className="border border-red-800 bg-red-200">
-                    //   <X className="text-red-800" />
-                    //   <p className="text-xs text-red-800 lg:text-base font-semibold">
-                    //     Belum Terverifikasi
-                    //   </p>
-                    // </Badge>
-                    null}
+                    ) : null}
                     {isLoading ? (
                       <Skeleton className="size-10 absolute top-3 right-0 rounded-full hidden lg:block" />
                     ) : (
@@ -161,9 +158,18 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
               {isLoading ? (
                 <Skeleton className="h-10 w-28 mt-4 rounded" />
               ) : (
-                <Button className="bg-[linear-gradient(81deg,#FD6700_-18.45%,#FF944B_29.81%)] lg:text-lg text-base px-15 py-5 mt-4">
-                  Ikuti
-                </Button>
+                <div className="space-x-4">
+                  <Button className="bg-[linear-gradient(81deg,#FD6700_-18.45%,#FF944B_29.81%)] lg:text-lg text-base px-15 py-5 mt-4">
+                    Ikuti
+                  </Button>
+                  <Link
+                    href={(merchant?.google_map_url as string) ?? ""}
+                    className="px-15 py-5"
+                    target="_blank"
+                  >
+                    <Button variant={"outline"}>Lihat Peta</Button>
+                  </Link>
+                </div>
               )}
             </div>
           </div>

@@ -10,17 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 const merchantTypes = [
-  "Warung Makan",
-  "Toko Kelontong",
-  "Kafe & Minuman",
-  "Toko Fashion",
-  "Toko Elektronik",
-  "Toko Furniture",
-  "Salon & Spa",
-  "Laundry",
-  "Workshop & Jasa",
-  "Lainnya",
+  { label: "Salon & Spa", value: "salon" },
+  { label: "Toko Fashion", value: "fashion" },
+  { label: "Warung Makan", value: "makanan" },
+  { label: "Toko Kelontong", value: "kelontong" },
+  { label: "Lainnya", value: "lainnya" },
+  { label: "Workshop & Jasa", value: "workshop_jasa" },
 ];
 
 import type { FormikValues } from "formik";
@@ -63,8 +60,8 @@ export function Step1BasicInfo({ formik }: Step1BasicInfoProps) {
             </SelectTrigger>
             <SelectContent>
               {merchantTypes.map((type) => (
-                <SelectItem key={type} value={type}>
-                  {type}
+                <SelectItem key={type.value} value={type.value}>
+                  {type.label}
                 </SelectItem>
               ))}
             </SelectContent>

@@ -11,7 +11,7 @@ const InspiratedItem = () => {
     <Card className="p-0 rounded-[20px] overflow-hidden group hover:box-shadow-lg transition-all duration-300 hover:shadow-primary pb-4">
       <CardHeader className="!p-0 relative overflow-hidden w-[413px] h-[180px] md:h-[200px] ">
         <div
-          className={`size-10 absolute top-3 right-10  ${
+          className={`size-10 absolute top-3 right-13  ${
             isLiked ? "bg-primary" : "bg-[#FFD6A7]"
           } rounded-full flex items-center justify-center z-100 `}
           onClick={toggleLike}

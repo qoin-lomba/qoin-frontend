@@ -11,6 +11,7 @@ export type AddProductsForm = {
   price: number;
   product_photo: File | null;
   product_photo_preview: string;
+  description: string;
 };
 
 const useAddProduct = () => {
@@ -33,6 +34,7 @@ const useAddProduct = () => {
     formData.append("name", values.name);
     formData.append("quantity", values.quantity.toString());
     formData.append("price", values.price.toString());
+    formData.append("description", values.description);
     if (values.product_photo) {
       formData.append("product_photo", values.product_photo);
     }
@@ -72,6 +74,7 @@ const useAddProduct = () => {
       price: 0,
       product_photo: null,
       product_photo_preview: "",
+      description: "",
     },
     onSubmit: (values: AddProductsForm) => {
       mutate(values);

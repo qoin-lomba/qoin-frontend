@@ -7,6 +7,7 @@ interface TabsProductProps {
   handleProduct: (productId: string) => void;
 }
 const TabsProduct = ({ product, handleProduct }: TabsProductProps) => {
+  
   return (
     <TabsContent value="products" className="">
       <div>

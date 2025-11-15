@@ -22,6 +22,7 @@ const AnimatedButton = ({ className }: { className?: string }) => {
             <Star3 className="w-[18px] h-[18px] text-[#F8C600]" />
           </span>
         </div>
+        <div className="bg-[linear-gradient(90deg,#FF6800_0%,#FFE59E_49.04%,#FFBA25_100%)] inset-0" />
         {/* Content */}
         <PrimaryButton className="group  relative overflow-visible shadow-[2px_4px_10px_0_rgba(233,109,0,0.4)] bg-[linear-gradient(86deg,#FD6700_4.98%,#FF944B_94.22%)] text-white rounded-[100px] lg:!px-7 lg:!py-5 !px-5 !py-5 flex items-center gap-2 hover:shadow-lg">
           <Search className="size-5" />

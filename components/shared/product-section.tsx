@@ -3,6 +3,7 @@ import DisplayProductTypeItem from "./display-product-type-item";
 import DisplayMerchant from "./display-merchant";
 import PromoProduct from "./promo-product";
 import InspiratedItem from "./inspirated-item";
+import { DisplayMerchantResponse } from "@/types";
 
 interface ProductSectionProps {
   title?: string;
@@ -11,6 +12,8 @@ interface ProductSectionProps {
   isExplore?: boolean;
   isPromo?: boolean;
   isInspirated?: boolean;
+  displayMerchant?: DisplayMerchantResponse;
+  isLoading?: boolean;
 }
 
 const ProductSection = ({
@@ -20,7 +23,13 @@ const ProductSection = ({
   isExplore,
   isPromo,
   isInspirated,
+  displayMerchant,
+  isLoading,
 }: ProductSectionProps) => {
+  const safeDisplayMerchant = Array.isArray(displayMerchant?.data)
+    ? displayMerchant.data
+    : [];
+
   return (
     <>
       <div className="space-y-3 mt-15 mb-7.5">
@@ -51,8 +60,13 @@ const ProductSection = ({
       {!isInspirated && (
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-6 gap-2 ">
           {isExplore &&
-            Array.from({ length: 4 }).map((_, idx) => (
-              <DisplayMerchant key={idx} />
+            !isLoading &&
+            safeDisplayMerchant.map((item, idx) => (
+              <DisplayMerchant
+                key={idx}
+                displayMerchant={item}
+                isLoading={isLoading}
+              />
             ))}
 
           {isPromo &&

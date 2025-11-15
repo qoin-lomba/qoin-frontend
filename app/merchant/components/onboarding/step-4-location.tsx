@@ -27,6 +27,34 @@ export function Step4Location({
         title="Lokasi Toko di Peta"
         description="Bantu pelanggan menemukan toko mu dengan lebih mudah (opsional)"
       >
+        <div className="mb-4">
+          <FormField
+            label="Masukkan link Google Maps"
+            helperText="Tempelkan URL lokasi toko dari Google Maps"
+          >
+            <Input
+              type="url"
+              placeholder="https://maps.google.com/..."
+              value={values.google_maps_url ?? ""}
+              onChange={(e) => setFieldValue("google_maps_url", e.target.value)}
+            />
+          </FormField>
+        </div>
+
+        <div className="mb-4">
+          <FormField
+            label="Iframe Google Maps (opsional)"
+            helperText="Tempelkan kode iframe dari Google Maps (hanya src atau full iframe)"
+          >
+            <Input
+              type="text"
+              placeholder='&lt;iframe src=\"https://www.google.com/maps/embed?...\" ... /&gt; atau hanya URL embed'
+              value={values.iframe_map_url ?? ""}
+              onChange={(e) => setFieldValue("iframe_map_url", e.target.value)}
+            />
+          </FormField>
+        </div>
+
         <div className="grid grid-cols-2 gap-4">
           <FormField label="Latitude" helperText="Cth: -6.9271">
             <Input

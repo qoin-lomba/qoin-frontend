@@ -12,25 +12,30 @@ type AsideCardContent = {
   description: string;
 };
 
-const asideCardContent: AsideCardContent[] = [
-  {
-    icon: <Telephone className="text-secondary" />,
-    title: "Telepon",
-    description: "081222122",
-  },
-  {
-    icon: <LocationIcon className="text-transparent" />,
-    title: "Lokasi",
-    description: "Jl. Sudirman No. 123, Jakarta Selatan",
-  },
-  {
-    icon: <Clock className="text-secondary" />,
-    title: "Jam Operasional",
-    description: "08:00 - 22:00",
-  },
-];
-
-const AsideCard = ({ className }: { className?: string }) => {
+const AsideCard = ({
+  className,
+  location,
+}: {
+  className?: string;
+  location?: string;
+}) => {
+  const asideCardContent: AsideCardContent[] = [
+    {
+      icon: <Telephone className="text-secondary" />,
+      title: "Telepon",
+      description: "081222122",
+    },
+    {
+      icon: <LocationIcon className="text-transparent" />,
+      title: "Lokasi",
+      description: location ?? "Merchant ini tidak menyediakan lokasi",
+    },
+    {
+      icon: <Clock className="text-secondary" />,
+      title: "Jam Operasional",
+      description: "08:00 - 22:00",
+    },
+  ];
   return (
     <Card className={`${className}`}>
       <CardContent className="pb-2">
