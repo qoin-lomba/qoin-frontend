@@ -21,7 +21,7 @@ export const schema = yup.object({
 
 const useSignup = () => {
   const signupRequest = async (values: SignupValues) => {
-    const response = await axiosInstance.post("http://localhost:3001/api/auth/signup", values)
+    const response = await axiosInstance.post("/api/auth/signup", values);
     return response.data;
   };
 
