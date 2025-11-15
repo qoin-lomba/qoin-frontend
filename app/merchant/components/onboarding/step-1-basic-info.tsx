@@ -3,7 +3,6 @@
 import { MerchantFormSection } from "./form-section";
 import { FormField } from "./form-field";
 import { Input } from "@/components/ui/input";
-import type { MerchantFormData } from "@/hooks/merchant/use-register-merchant";
 import {
   Select,
   SelectContent,
