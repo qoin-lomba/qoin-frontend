@@ -29,11 +29,11 @@ const ImageHeroContent = ({
   description = "Yuk kenalan sama para pelaku UMKM yang lagi jadi favorit netizen.",
   CTAText = "Eksplor Yuk",
 }: ImageHeroContentProps) => (
-  <div className="px-[41px] pb-[29px] space-y-3 pt-12 lg:pt-0 z-1000 ">
+  <div className="lg:px-[41px] pb-[29px] space-y-3 pt-12 lg:pt-0 z-1000 ">
     <h1 className="font-extrabold lg:text-[50px] text-3xl md:text-4xl text-white">
       {title}
     </h1>
-    <p className="lg:text-2xl text-base md:text-xl text-white">{description}</p>
+    <p className="lg:text-2xl text-sm md:text-xl text-white">{description}</p>
     <Button className="px-[26px] py-6 gap-2.5 flex items-center group hover:shadow-[0_4px_15px_rgba(233,167,0,0.5)] bg-[#FFF2D9] border border-[#FF6800] hover:bg-[#FFD6A7] shadow-[2px_4px_10px_rgba(233,109,0,0.4)] overflow-hidden text-primary">
       <div>
         <p className="lg:text-2xl text-xl">{CTAText}</p>
@@ -65,7 +65,7 @@ const ImageHero = ({ isBlank, isExplore }: ImageHeroProps) => {
                 Dukung UMKM lokal, dapetin reward tiap kali belanja!
               </p>
               <ShinyButton
-                className="mt-[30px] mx-auto lg:mx-0"
+                className="mt-[30px] mx-auto lg:mx-0 "
                 onClick={() => router.push("/merchant/type/Semua")}
               >
                 Eksplor Sekarang

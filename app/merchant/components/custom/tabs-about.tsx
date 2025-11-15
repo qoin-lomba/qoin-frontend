@@ -32,7 +32,7 @@ const jamOperasional: JamOperasional[] = [
   { day: "Minggu", hours: "09.00 - 20.00" },
 ];
 
-const TabsAbout = () => {
+const TabsAbout = ({ maps }: { maps?: string | null }) => {
   return (
     <TabsContent value="abouts" className="space-y-7.5">
       <Card>
@@ -44,6 +44,22 @@ const TabsAbout = () => {
             dan minuman segar. Semua masakan dibuat dengan bahan-bahan
             berkualitas dan bumbu tradisional yang khas.
           </p>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent>
+          {maps ? (
+            <div className="w-full h-64 md:h-80 lg:h-96 overflow-hidden rounded-xl">
+              <iframe
+                src={maps}
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">Lokasi belum tersedia.</p>
+          )}
         </CardContent>
       </Card>
       <Card>

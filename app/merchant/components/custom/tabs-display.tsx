@@ -69,7 +69,7 @@ const TabsDisplay = ({
             product={merchant?.stocks}
             handleProduct={handleProduct}
           />
-          <TabsAbout />
+          <TabsAbout maps={merchant?.iframe_map_url} />
           <TabsReview />
         </div>
       </Tabs>
