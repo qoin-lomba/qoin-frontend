@@ -10,10 +10,22 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import useClickLike from "@/hooks/landing-page/use-click-like";
 import { Merchant } from "@/types";
-import { Heart } from "lucide-react";
+import { Flag, Heart } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Store from "@/components/icons/store";
 
 type MerchantInfo = {
   amount: number | string | undefined;
@@ -25,6 +37,15 @@ interface MerchantHeaderProps {
   merchant: Merchant | null;
 }
 const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
+  const [reportOpen, setReportOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const handleSubmitReport = () => {
+    // untuk saat ini hanya tampilkan toast statis
+    toast.success("Terima kasih, laporanmu sudah kami terima.");
+    setReportOpen(false);
+    setSelectedCategory(null);
+  };
   const heroSrc = merchant?.profilePhotoUrl || "/images/merchant-image.png";
 
   const merchantInfo: MerchantInfo[] = [
@@ -33,7 +54,7 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
     { amount: merchant?.total_follower ?? 0, text: "Pengikut" },
   ];
   const { isLiked, toggleLike } = useClickLike();
-  const router = useRouter();
+
   return (
     <Section className="!px-0">
       <PageContainer>
@@ -105,20 +126,30 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
                     {isLoading ? (
                       <Skeleton className="size-10 absolute top-3 right-0 rounded-full hidden lg:block" />
                     ) : (
-                      <div
-                        className={`size-10 absolute top-3 right-0  ${
-                          isLiked ? "bg-primary" : "bg-[#FFD6A7]"
-                        } rounded-full hidden items-center justify-center z-100 lg:flex  `}
-                        onClick={toggleLike}
-                      >
-                        <Heart
-                          className={`transition duration-300 ${
-                            isLiked
-                              ? "text-[#FFD6A7] fill-current"
-                              : "text-primary"
-                          }`}
-                        />
-                      </div>
+                      <>
+                        <div
+                          className={`size-10 absolute top-3 right-12  ${
+                            isLiked ? "bg-primary" : "bg-[#FFD6A7]"
+                          } rounded-full hidden items-center justify-center z-100 lg:flex  `}
+                          onClick={toggleLike}
+                        >
+                          <Heart
+                            className={`transition duration-300 ${
+                              isLiked
+                                ? "text-[#FFD6A7] fill-current"
+                                : "text-primary"
+                            }`}
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setReportOpen(true)}
+                          className="bg-[#FFD5D5] rounded-full size-10 absolute right-0 flex items-center justify-center top-3"
+                          aria-label="Laporkan merchant"
+                        >
+                          <Flag className="text-[#ED3437]" />
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -175,6 +206,112 @@ const MerchantHeader = ({ isLoading, merchant }: MerchantHeaderProps) => {
           </div>
         </div>
       </PageContainer>
+
+      {/* Dialog Laporkan Merchant */}
+      <Dialog open={reportOpen} onOpenChange={setReportOpen}>
+        <DialogContent className="max-w-xl w-[90vw] rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl font-extrabold text-[#333]">
+              Laporkan Merchant
+            </DialogTitle>
+            <DialogDescription className="text-center text-sm text-[#606060]">
+              Bantu kami menjaga kualitas merchant di platform Qoin.in
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-4 space-y-4">
+            <div className="border rounded-2xl px-4 py-3 bg-[#FFF7ED] flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <Store />
+                <p className="font-semibold text-sm md:text-base text-[#333]">
+                  {merchant?.name ?? "Merchant"}
+                </p>
+              </div>
+              <p className="text-xs md:text-sm text-[#8D8D8D]">
+                {merchant?.location ?? "Lokasi merchant tidak tersedia"}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold mb-2 text-secondary">
+                Pilih Kategori Laporan
+              </p>
+              <RadioGroup
+                value={selectedCategory ?? ""}
+                onValueChange={(val: string) => setSelectedCategory(val)}
+                className="space-y-3"
+              >
+                <Label
+                  htmlFor="report-fake"
+                  className="flex items-start gap-3 border rounded-2xl px-4 py-3 cursor-pointer hover:bg-[#FFF7ED]"
+                >
+                  <RadioGroupItem
+                    id="report-fake"
+                    value="fake"
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold text-[#333]">
+                      Merchant Fiktif / Tidak Ditemukan
+                    </span>
+                    <span className="block text-xs text-[#8D8D8D]">
+                      Merchant tidak ada di lokasi yang tertera
+                    </span>
+                  </span>
+                </Label>
+
+                <Label
+                  htmlFor="report-location"
+                  className="flex items-start gap-3 border rounded-2xl px-4 py-3 cursor-pointer hover:bg-[#FFF7ED]"
+                >
+                  <RadioGroupItem
+                    id="report-location"
+                    value="location"
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold text-[#333]">
+                      Alamat / Lokasi Salah
+                    </span>
+                    <span className="block text-xs text-[#8D8D8D]">
+                      Lokasi di peta tidak sesuai dengan lokasi sebenarnya
+                    </span>
+                  </span>
+                </Label>
+
+                <Label
+                  htmlFor="report-photo"
+                  className="flex items-start gap-3 border rounded-2xl px-4 py-3 cursor-pointer hover:bg-[#FFF7ED]"
+                >
+                  <RadioGroupItem
+                    id="report-photo"
+                    value="photo"
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold text-[#333]">
+                      Foto Tidak Sesuai
+                    </span>
+                    <span className="block text-xs text-[#8D8D8D]">
+                      Foto tidak sesuai dengan kondisi merchant
+                    </span>
+                  </span>
+                </Label>
+              </RadioGroup>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <Button
+              className="w-full bg-[linear-gradient(81deg,#FD6700_-18.45%,#FF944B_29.81%)] text-white text-sm md:text-base py-3 rounded-2xl"
+              onClick={handleSubmitReport}
+              disabled={!selectedCategory}
+            >
+              Kirim Laporan
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Section>
   );
 };

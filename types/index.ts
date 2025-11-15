@@ -32,7 +32,7 @@ export interface Merchant {
   latitude: number;
   longitude: number;
   google_map_url: string | null;
-
+  iframe_map_url: string | null;
   // Relations
   stocks: Stock[];
   ratings: any[]; // bisa buat interface detail kalau dibutuhkan
