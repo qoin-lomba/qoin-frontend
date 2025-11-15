@@ -20,7 +20,7 @@ const useGetMerchantById = (overrideId?: string) => {
     queryFn: async () => {
       try {
         const response = await axiosInstance.get(
-          `/api/merchant/id/${merchantId}`
+          `/api/merchant/${merchantId}`
         );
 
         return response.data;
